@@ -86,7 +86,6 @@ Then configure the rules you want to use under the rules section.
 }
 ```
 
-
 You can also enable all the recommended or strict rules at once.
 Add `plugin:jsx-a11y/recommended` or `plugin:jsx-a11y/strict` in `extends`:
 
