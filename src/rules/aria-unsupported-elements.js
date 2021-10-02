@@ -43,7 +43,7 @@ export default {
         return;
       }
 
-      const invalidAttributes = [...aria.keys()].concat('role');
+      const invalidAttributes = aria.keys().concat('role');
 
       node.attributes.forEach((prop) => {
         if (prop.type === 'JSXSpreadAttribute') {

@@ -36,14 +36,14 @@ const errorMessage = (attr, role, tag, isImplicit) => ({
   type: 'JSXOpeningElement',
 });
 
-const nonAbstractRoles = [...roles.keys()].filter((role) => roles.get(role).abstract === false);
+const nonAbstractRoles = roles.keys().filter((role) => roles.get(role).abstract === false);
 
 const createTests = (rolesNames) => rolesNames.reduce((tests, role) => {
   const {
     props: propKeyValues,
   } = roles.get(role);
   const validPropsForRole = Object.keys(propKeyValues);
-  const invalidPropsForRole = [...aria.keys()]
+  const invalidPropsForRole = aria.keys()
     .map((attribute) => attribute.toLowerCase())
     .filter((attribute) => validPropsForRole.indexOf(attribute) === -1);
   const normalRole = role.toLowerCase();

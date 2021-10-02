@@ -31,7 +31,7 @@ import isPresentationRole from '../util/isPresentationRole';
 
 const errorMessage = 'Non-interactive elements should not be assigned mouse or keyboard event listeners.';
 
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 const defaultInteractiveProps = [
   ...eventHandlersByType.focus,
   ...eventHandlersByType.image,

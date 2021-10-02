@@ -15,10 +15,10 @@ import type { Node } from 'ast-types-flow';
 import includes from 'array-includes';
 import attributesComparator from './attributesComparator';
 
-const roleKeys = [...roles.keys()];
-const elementRoleEntries = [...elementRoles];
+const roleKeys = roles.keys();
+const elementRoleEntries = elementRoles.entries();
 
-const nonInteractiveRoles = new Set(roleKeys
+const nonInteractiveRoles = roleKeys
   .filter((name) => {
     const role = roles.get(name);
     return (
@@ -35,9 +35,9 @@ const nonInteractiveRoles = new Set(roleKeys
     // The `progressbar` is descended from `widget`, but in practice, its
     // value is always `readonly`, so we treat it as a non-interactive role.
     'progressbar',
-  ));
+  );
 
-const interactiveRoles = new Set(roleKeys
+const interactiveRoles = roleKeys
   .filter((name) => {
     const role = roles.get(name);
     return (
@@ -54,7 +54,7 @@ const interactiveRoles = new Set(roleKeys
     // 'toolbar' does not descend from widget, but it does support
     // aria-activedescendant, thus in practice we treat it as a widget.
     'toolbar',
-  ));
+  );
 
 const nonInteractiveElementRoleSchemas = elementRoleEntries
   .reduce((
@@ -64,7 +64,9 @@ const nonInteractiveElementRoleSchemas = elementRoleEntries
       roleSet,
     ],
   ) => {
-    if ([...roleSet].every((role): boolean => nonInteractiveRoles.has(role))) {
+    if (roleSet.every((role): boolean => nonInteractiveRoles.findIndex(
+      (n) => n === role,
+    ) > -1)) {
       accumulator.push(elementSchema);
     }
     return accumulator;
@@ -78,16 +80,18 @@ const interactiveElementRoleSchemas = elementRoleEntries
       roleSet,
     ],
   ) => {
-    if ([...roleSet].some((role): boolean => interactiveRoles.has(role))) {
+    if (roleSet.some((role): boolean => interactiveRoles.findIndex(
+      (n) => n === role,
+    ) > -1)) {
       accumulator.push(elementSchema);
     }
     return accumulator;
   }, []);
 
-const nonInteractiveAXObjects = new Set([...AXObjects.keys()]
-  .filter((name) => includes(['window', 'structure'], AXObjects.get(name).type)));
+const nonInteractiveAXObjects = AXObjects.keys()
+  .filter((name) => includes(['window', 'structure'], AXObjects.get(name).type));
 
-const nonInteractiveElementAXObjectSchemas = [...elementAXObjects]
+const nonInteractiveElementAXObjectSchemas = elementAXObjects.entries()
   .reduce((
     accumulator,
     [
@@ -95,7 +99,9 @@ const nonInteractiveElementAXObjectSchemas = [...elementAXObjects]
       AXObjectSet,
     ],
   ) => {
-    if ([...AXObjectSet].every((role): boolean => nonInteractiveAXObjects.has(role))) {
+    if (AXObjectSet.every((role): boolean => nonInteractiveAXObjects.findIndex(
+      (n) => n === role,
+    ) > -1)) {
       accumulator.push(elementSchema);
     }
     return accumulator;

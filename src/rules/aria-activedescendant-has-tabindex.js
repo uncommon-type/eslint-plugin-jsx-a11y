@@ -17,7 +17,7 @@ const errorMessage = 'An element that manages focus with `aria-activedescendant`
 
 const schema = generateObjSchema();
 
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 
 export default {
   meta: {

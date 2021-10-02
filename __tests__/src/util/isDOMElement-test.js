@@ -5,7 +5,7 @@ import { elementType } from 'jsx-ast-utils';
 import isDOMElement from '../../../src/util/isDOMElement';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';
 
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 
 describe('isDOMElement', () => {
   describe('DOM elements', () => {

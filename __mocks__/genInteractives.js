@@ -7,8 +7,8 @@ import includes from 'array-includes';
 import JSXAttributeMock, { JSXAttributeMockType } from './JSXAttributeMock';
 import JSXElementMock, { JSXElementMockType } from './JSXElementMock';
 
-const domElements = [...dom.keys()];
-const roleNames = [...roles.keys()];
+const domElements = dom.keys();
+const roleNames = roles.keys();
 
 const interactiveElementsMap = {
   a: [{ prop: 'href', value: '#' }],

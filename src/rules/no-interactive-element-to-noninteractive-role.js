@@ -27,7 +27,7 @@ import isPresentationRole from '../util/isPresentationRole';
 
 const errorMessage = 'Interactive elements should not be assigned non-interactive roles.';
 
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 
 export default ({
   meta: {

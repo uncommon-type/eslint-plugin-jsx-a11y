@@ -31,7 +31,7 @@ import isPresentationRole from '../util/isPresentationRole';
 
 const errorMessage = 'Static HTML elements with event handlers require a role.';
 
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 const defaultInteractiveProps = [
   ...eventHandlersByType.focus,
   ...eventHandlersByType.keyboard,

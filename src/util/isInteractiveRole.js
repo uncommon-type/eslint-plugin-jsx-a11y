@@ -4,7 +4,7 @@ import type { Node } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
 import includes from 'array-includes';
 
-const roles = [...rolesMap.keys()];
+const roles = rolesMap.keys();
 const interactiveRoles = roles
   .filter((name) => !rolesMap.get(name).abstract)
   .filter((name) => rolesMap.get(name).superClass.some((klasses) => includes(klasses, 'widget')));

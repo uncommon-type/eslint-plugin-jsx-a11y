@@ -64,7 +64,7 @@ export default {
         props: propKeyValues,
       } = roles.get(roleValue);
       const propertySet = Object.keys(propKeyValues);
-      const invalidAriaPropsForRole = [...aria.keys()]
+      const invalidAriaPropsForRole = aria.keys()
         .filter((attribute) => propertySet.indexOf(attribute) === -1);
 
       node.attributes.forEach((prop) => {

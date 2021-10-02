@@ -11,12 +11,13 @@ const isSemanticRoleElement = (
   attributes: Array<JSXAttribute>,
 ): boolean => {
   const roleAttr = getProp(attributes, 'role');
-  let res = false;
   const roleAttrValue = getLiteralPropValue(roleAttr);
-  elementAXObjects.forEach((axObjects, concept) => {
-    if (res) {
-      return;
-    }
+  const entries = elementAXObjects.entries();
+  for (let i = 0; i < entries.length; i += 1) {
+    const [
+      concept,
+      axObjects,
+    ] = entries[i];
     if (
       concept.name === elementType
       && (concept.attributes || []).every(
@@ -38,25 +39,21 @@ const isSemanticRoleElement = (
         ),
       )
     ) {
-      axObjects.forEach((name) => {
-        if (res) {
-          return;
-        }
+      for (let k = 0; k < axObjects.length; k += 1) {
+        const name = axObjects[k];
         const roles = AXObjectRoles.get(name);
         if (roles) {
-          roles.forEach((role) => {
-            if (res === true) {
-              return;
-            }
+          for (let m = 0; m < roles.length; m += 1) {
+            const role = roles[m];
             if (role.name === roleAttrValue) {
-              res = true;
+              return true;
             }
-          });
+          }
         }
-      });
+      }
     }
-  });
-  return res;
+  }
+  return false;
 };
 
 export default isSemanticRoleElement;

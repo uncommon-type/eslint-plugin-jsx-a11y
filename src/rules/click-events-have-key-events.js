@@ -18,7 +18,7 @@ import isPresentationRole from '../util/isPresentationRole';
 const errorMessage = 'Visible, non-interactive elements with click handlers must have at least one keyboard listener.';
 
 const schema = generateObjSchema();
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 
 export default {
   meta: {

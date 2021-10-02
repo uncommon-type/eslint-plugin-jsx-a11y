@@ -4,10 +4,10 @@ import {
 } from 'aria-query';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
 
-const abstractRoles = new Set([...roles.keys()]
+const abstractRoles = new Set(roles.keys()
   .filter((role) => roles.get(role).abstract));
 
-const DOMElements = [...dom.keys()];
+const DOMElements = dom.keys();
 
 const isAbstractRole = (tagName, attributes) => {
   // Do not test higher level JSX components, as we do not know what

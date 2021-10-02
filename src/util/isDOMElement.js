@@ -4,7 +4,7 @@
 import { dom } from 'aria-query';
 import includes from 'array-includes';
 
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 
 /**
  * Returns boolean indicating whether the given element is a DOM element.

@@ -25,7 +25,7 @@ import isInteractiveRole from '../util/isInteractiveRole';
 
 const errorMessage = 'Non-interactive elements should not be assigned interactive roles.';
 
-const domElements = [...dom.keys()];
+const domElements = dom.keys();
 
 export default ({
   meta: {

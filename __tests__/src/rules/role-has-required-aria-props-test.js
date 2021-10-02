@@ -30,7 +30,7 @@ const errorMessage = (role) => {
 };
 
 // Create basic test cases using all valid role types.
-const basicValidityTests = [...roles.keys()].map((role) => {
+const basicValidityTests = roles.keys().map((role) => {
   const {
     requiredProps: requiredPropKeyValues,
   } = roles.get(role);
