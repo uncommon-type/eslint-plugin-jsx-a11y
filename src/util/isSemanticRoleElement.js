@@ -39,14 +39,15 @@ const isSemanticRoleElement = (
         ),
       )
     ) {
-      for (let k = 0; k < axObjects.length; k += 1) {
-        const roles = AXObjectRoles.get(axObjects[k]);
+      return axObjects.some((obj) => {
+        const roles = AXObjectRoles.get(obj);
         if (roles && roles.some(
           (role) => role.name === roleAttrValue,
         )) {
           return true;
         }
-      }
+        return false;
+      });
     }
   }
   return false;
