@@ -28,7 +28,7 @@ Comprobador AST estático para reglas de accesibilidad en elementos JSX.
 
 ## ¿Porque?
 
-Ryan Florence desarrolló esta increíble herramienta de análisis de tiempo de ejecución llamada [react-a11y] (https://github.com/reactjs/react-a11y). Es super útil. Dado que probablemente ya esté utilizando linting en su proyecto, este plugin es gratuito y más cerca del proceso de development real. Si combina este plugin con un editor lint plugin, puede incorporar estándares de accesibilidad a su aplicación en tiempo real.
+Este plugin realiza una evaluación estática de JSX para detectar problemas de accesibilidad en las aplicaciones React. Dado que sólo detecta errores en el código estático, úsalo en combinación con @axe-core/react para comprobar la accesibilidad del DOM generado. Considera estas herramientas sólo como un paso de un proceso más amplio de pruebas de accesibilidad y prueba siempre tus aplicaciones con tecnología de asistencia.
 
 **Nota**: Este proyecto no * reemplaza * react-a11y, pero puede y debe usarse junto con él. Las herramientas de análisis estático no pueden determinar los valores de los variables que se colocan en props antes del tiempo de ejecución, así que el linting no fallará si ese valor no está definido y / o no pasa la regla de lint.
 
